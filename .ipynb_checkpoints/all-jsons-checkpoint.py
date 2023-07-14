@@ -17,7 +17,7 @@
 import os, json
 import pandas as pd
 
-path_to_json = '{FILEPATH}/harvard-geodata/json'
+path_to_json = '/Users/viviannguyen/Documents/GitHub/harvard-geodata/json'
 json_files = [pos_json for pos_json in os.listdir(path_to_json) if pos_json.endswith('.json')]
 jsons_df = pd.DataFrame(columns=['GBL_version', 'identifier', 'title', 'description', 'rights', 'provenance', 'references', 'ID', 'slug', 'geom_type', 'modified', 'creator', 'publisher', 'format', 'type', 'subject', 'spatial', 'issued', 'temporal', 'geom', 'year', 'harvard_collection_ID'])
 
@@ -89,9 +89,8 @@ for index, js in enumerate(json_files):
         # Collection ID in Harvard Library
         harvard_collection_ID = json_text['harvard_collectionID_sm'] 
         
-        
         # Join all the columns into pandas dataframe
         jsons_df.loc[index] = [GBL_version, identifier, title, description, rights, provenance, references, ID, slug, geom_type, modified, creator, publisher, format, type, subject, spatial, issued, temporal, geom, year, harvard_collection_ID]
 
 # Save to .csv
-jsons_df.to_csv('{FILEPATH}/all-metadata.csv')
+jsons_df.to_csv('/Users/viviannguyen/Documents/GitHub/vn-may-crane-23-docs/all-metadata.csv', index = False)
